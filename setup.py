@@ -77,20 +77,20 @@ with open("README.md", encoding="utf-8") as f:  # Loads in the README for PyPI
 
 
 setup(
-    name="hug",
+    name="hug-upgraded",
     version="2.7.1",
-    description="A Python framework that makes developing APIs "
-    "as simple as possible, but no simpler.",
+    description="(🍴Fork for newer Python version compatibility) "
+    "A Python framework that makes developing APIs "
+    "as simple as possible, but no simpler ",
     long_description=long_description,
     # PEP 566, the new PyPI, and setuptools>=38.6.0 make markdown possible
     long_description_content_type="text/markdown",
     author="Timothy Crosley",
     author_email="timothy.crosley@gmail.com",
     # These appear in the left hand side bar on PyPI
-    url="https://github.com/hugapi/hug",
+    url="https://github.com/comaintain/hug",
     project_urls={
         "Documentation": "http://www.hug.rest/",
-        "Gitter": "https://gitter.im/timothycrosley/hug",
     },
     license="MIT",
     entry_points={"console_scripts": ["hug = hug:development_runner.hug.interface.cli"]},

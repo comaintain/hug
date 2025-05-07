@@ -1,16 +1,12 @@
 [![HUG](https://raw.github.com/hugapi/hug/develop/artwork/logo.png)](http://hug.rest)
 ===================
 
-[![PyPI version](https://badge.fury.io/py/hug.svg)](http://badge.fury.io/py/hug)
-[![Build Status](https://travis-ci.org/hugapi/hug.svg?branch=develop)](https://travis-ci.org/hugapi/hug)
-[![Windows Build Status](https://ci.appveyor.com/api/projects/status/0h7ynsqrbaxs7hfm/branch/master?svg=true)](https://ci.appveyor.com/project/TimothyCrosley/hug)
-[![Coverage Status](https://coveralls.io/repos/hugapi/hug/badge.svg?branch=develop&service=github)](https://coveralls.io/github/hugapi/hug?branch=master)
+[![PyPI version](https://badge.fury.io/py/hug-upgraded.svg)](http://badge.fury.io/py/hug-upgraded)
 [![License](https://img.shields.io/github/license/mashape/apistatus.svg)](https://pypi.python.org/pypi/hug/)
-[![Join the chat at https://gitter.im/timothycrosley/hug](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/timothycrosley/hug?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 _________________
 
-[Read Latest Documentation](https://hugapi.github.io/hug/) - [Browse GitHub Code Repository](https://github.com/hugapi/hug)
+[Read Latest Documentation](https://hugapi.github.io/hug/) - [Browse GitHub Code Repository](https://github.com/comaintain/hug)
 _________________
 
 hug aims to make developing Python driven APIs as simple as possible, but no simpler. As a result, it drastically simplifies Python API development.
@@ -45,7 +41,7 @@ Installing hug
 Installing hug is as simple as:
 
 ```bash
-pip3 install hug --upgrade
+pip3 install hug-upgraded --upgrade
 ```
 
 Ideally, within a [virtual environment](http://docs.python-guide.org/en/latest/dev/virtualenvs/).
