@@ -126,9 +126,10 @@ class TestContextFactoryLocal(object):
 
         class UserSchema(Schema):
             name = fields.Str()
+            many = fields.Boolean()
 
             @post_dump()
-            def check_context(self, data):
+            def check_context(self, data, many=None):
                 assert self.context["test"] == "context"
                 self.context["test_number"] += 1
 
@@ -304,7 +305,7 @@ class TestContextFactoryCLI(object):
             name = fields.Str()
 
             @post_dump()
-            def check_context(self, data):
+            def check_context(self, data, many=None):
                 assert self.context["test"] == "context"
                 self.context["test_number"] += 1
 
@@ -479,7 +480,7 @@ class TestContextFactoryHTTP(object):
             name = fields.Str()
 
             @post_dump()
-            def check_context(self, data):
+            def check_context(self, data, many=None):
                 assert self.context["test"] == "context"
                 self.context["test_number"] += 1
 
