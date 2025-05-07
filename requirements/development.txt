@@ -1,16 +1,8 @@
-bumpversion==0.5.3
-Cython==0.29.10
+bumpversion==0.6.0
+# Cython==0.29.10
 -r common.txt
-flake8==3.7.7
+-r build.txt
 ipython==7.5.0
 isort==4.3.20
-pytest-cov==2.7.1
-pytest==4.6.3
-python-coveralls==2.9.2
-tox==3.12.1
-wheel
-pytest-xdist==1.29.0
-marshmallow==2.18.1
-ujson==1.35
-numpy<1.16
-
+tox==3.28.0
+# ujson==1.35

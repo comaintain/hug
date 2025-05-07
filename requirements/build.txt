@@ -1,2 +1,2 @@
 -r build_common.txt
-marshmallow==2.18.1
+marshmallow==3.26.1
