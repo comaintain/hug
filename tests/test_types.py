@@ -396,7 +396,7 @@ def test_marshmallow_schema():
     schema_type = hug.types.MarshmallowReturnSchema(UserSchema())
     assert schema_type({"name": 23}) == {"name": 23}
     assert schema_type.__doc__ == "UserSchema"
-    with pytest.raises(InvalidTypeData):
+    with pytest.raises(ValueError):
         schema_type({"name": "test"})
 
 
@@ -464,7 +464,7 @@ def test_marshmallow_custom_context():
         name = fields.String()
 
         @validates_schema
-        def check_context(self, data):
+        def check_context(self, data, partial=None, many=None):
             assert self.context == custom_context
             self.context["marshmallow"] += 1
 
@@ -824,5 +824,5 @@ def test_validate_route_args_negative_case():
     def foo():
         return {"bar": "a"}
 
-    with pytest.raises(InvalidTypeData):
+    with pytest.raises(ValueError):
         hug.test.get(api, "/foo")
