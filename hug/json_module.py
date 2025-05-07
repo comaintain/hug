@@ -1,6 +1,7 @@
 import os
 
-HUG_USE_UJSON = bool(os.environ.get("HUG_USE_UJSON", 1))
+# Disabled by default due to test failures and ujson being in maintenance mode
+HUG_USE_UJSON = bool(os.environ.get("HUG_USE_UJSON"))
 try:  # pragma: no cover
     if HUG_USE_UJSON:
         import ujson as json
