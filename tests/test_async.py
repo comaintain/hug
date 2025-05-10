@@ -20,15 +20,12 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 """
 
-import asyncio
-
 import hug
 
-loop = asyncio.get_event_loop()
 api = hug.API(__name__)
 
 
-def test_basic_call_async():
+def test_basic_call_async(loop):
     """ The most basic Happy-Path test for Hug APIs using async """
 
     @hug.call()
@@ -38,7 +35,7 @@ def test_basic_call_async():
     assert loop.run_until_complete(hello_world()) == "Hello World!"
 
 
-def tested_nested_basic_call_async():
+def tested_nested_basic_call_async(loop):
     """Test to ensure the most basic call still works if applied to a method"""
 
     @hug.call()
@@ -54,7 +51,7 @@ def tested_nested_basic_call_async():
     assert hug.test.get(api, "/hello_world").data == "Hello World!"
 
 
-def test_basic_call_on_method_async():
+def test_basic_call_on_method_async(loop):
     """Test to ensure the most basic call still works if applied to a method"""
 
     class API(object):
@@ -68,7 +65,7 @@ def test_basic_call_on_method_async():
     assert hug.test.get(api, "/hello_world").data == "Hello World!"
 
 
-def test_basic_call_on_method_through_api_instance_async():
+def test_basic_call_on_method_through_api_instance_async(loop):
     """Test to ensure instance method calling via async works as expected"""
 
     class API(object):
@@ -85,7 +82,7 @@ def test_basic_call_on_method_through_api_instance_async():
     assert hug.test.get(api, "/hello_world").data == "Hello World!"
 
 
-def test_basic_call_on_method_registering_without_decorator_async():
+def test_basic_call_on_method_registering_without_decorator_async(loop):
     """Test to ensure async methods can be used without decorator"""
 
     class API(object):

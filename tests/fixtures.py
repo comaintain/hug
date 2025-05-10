@@ -32,3 +32,14 @@ def hug_api_error_exit_codes_enabled():
     for a single test case with error exit codes enabled.
     """
     return TestAPI("fake_api_{}".format(randint(0, 1000000)), cli_error_exit_codes=True)
+
+
+@pytest.fixture
+def loop():
+    """Create a new event loop for each test."""
+    import asyncio
+
+    l = asyncio.new_event_loop()
+    asyncio.set_event_loop(l)
+    yield l
+    l.close()

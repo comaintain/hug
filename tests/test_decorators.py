@@ -1577,7 +1577,7 @@ def test_cli_with_multiple_ints():
     assert hug.test.cli(test_multiple_cli, ints=["1", "2", "3"]) == [1, 2, 3]
 
 
-def test_startup(hug_api):
+def test_startup(hug_api, loop):
     """Test to ensure hug startup decorators work as expected"""
     happened_on_startup = []
 
