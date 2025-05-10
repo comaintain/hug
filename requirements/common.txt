@@ -1,2 +1,3 @@
 falcon==2.0.0
 requests==2.32.3
+legacy-cgi; python_version >= '3.13'
