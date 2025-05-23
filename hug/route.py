@@ -225,12 +225,22 @@ class API(object):
         return http(*args, **kwargs)
 
 
-for method in HTTP_METHODS:
+def _make_method_handler(method: str) -> "type[http]":
     method_handler = partial(http, accept=(method,))
     method_handler.__doc__ = "Exposes a Python method externally as an HTTP {0} method".format(
         method.upper()
     )
-    globals()[method.lower()] = method_handler
+    return method_handler
+
+connect = _make_method_handler("CONNECT")
+delete = _make_method_handler("DELETE")
+get = _make_method_handler("GET")
+head = _make_method_handler("HEAD")
+options = _make_method_handler("OPTIONS")
+patch = _make_method_handler("PATCH")
+post = _make_method_handler("POST")
+put = _make_method_handler("PUT")
+trace = _make_method_handler("TRACE")
 
 get_post = partial(http, accept=("GET", "POST"))
 get_post.__doc__ = "Exposes a Python method externally under both the HTTP POST and GET methods"
