@@ -724,10 +724,10 @@ class HTTP(Interface):
             )
             if body_formatter:
                 body = body_formatter(body, content_length=request.content_length, **content_params)
-            if "body" in self.all_parameters:
-                input_parameters["body"] = body
             if isinstance(body, dict):
                 input_parameters.update(body)
+            if "body" in self.all_parameters:
+                input_parameters["body"] = body
         elif "body" in self.all_parameters:
             input_parameters["body"] = None
 
