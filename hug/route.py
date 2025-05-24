@@ -19,8 +19,6 @@ CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFT
 OTHER DEALINGS IN THE SOFTWARE.
 
 """
-from __future__ import absolute_import
-
 from functools import partial
 from types import FunctionType, MethodType
 

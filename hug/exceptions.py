@@ -19,8 +19,6 @@ CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFT
 OTHER DEALINGS IN THE SOFTWARE.
 
 """
-from __future__ import absolute_import
-
 
 class InvalidTypeData(Exception):
     """Should be raised when data passed in doesn't match a types expectations"""

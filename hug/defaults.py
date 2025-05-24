@@ -19,9 +19,9 @@ CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFT
 OTHER DEALINGS IN THE SOFTWARE.
 
 """
-from __future__ import absolute_import
-
-import hug
+import hug.directives
+import hug.input_format
+import hug.output_format
 
 output_format = hug.output_format.json
 cli_output_format = hug.output_format.text

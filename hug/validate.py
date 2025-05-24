@@ -19,9 +19,6 @@ CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFT
 OTHER DEALINGS IN THE SOFTWARE.
 
 """
-from __future__ import absolute_import
-
-
 def all(*validators):
     """Validation only succeeds if all passed in validators return no errors"""
 

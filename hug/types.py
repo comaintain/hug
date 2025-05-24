@@ -19,8 +19,6 @@ CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFT
 OTHER DEALINGS IN THE SOFTWARE.
 
 """
-from __future__ import absolute_import
-
 import uuid as native_uuid
 from decimal import Decimal
 from packaging.version import Version
