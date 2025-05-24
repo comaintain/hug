@@ -21,9 +21,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 """
 import os
-import re
 from collections import OrderedDict
-from functools import wraps
 from urllib.parse import urljoin
 
 import falcon
@@ -32,8 +30,6 @@ from falcon import HTTP_METHODS
 import hug.api
 import hug.interface
 import hug.output_format
-from hug import introspect
-from hug.exceptions import InvalidTypeData
 
 
 class Router(object):

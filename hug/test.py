@@ -23,7 +23,6 @@ import ast
 import sys
 from functools import partial
 from io import BytesIO
-from unittest import mock
 from urllib.parse import urlencode
 
 from falcon import HTTP_METHODS

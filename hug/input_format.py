@@ -19,14 +19,15 @@ CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFT
 OTHER DEALINGS IN THE SOFTWARE.
 
 """
-import re
+import urllib.parse
 from cgi import parse_multipart
-from urllib.parse import parse_qs as urlencoded_converter
 
 from falcon.util.uri import parse_query_string
 
 from hug.format import content_type, underscore
 from hug.json_module import json as json_converter
+
+urlencoded_converter = urllib.parse.parse_qs
 
 
 @content_type("text/plain")

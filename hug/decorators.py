@@ -25,9 +25,6 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 """
 import functools
-from collections import namedtuple
-
-from falcon import HTTP_METHODS
 
 import hug.api
 import hug.defaults

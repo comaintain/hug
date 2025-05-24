@@ -24,24 +24,19 @@ import asyncio
 import os
 import sys
 from collections import OrderedDict
-from functools import lru_cache, partial, wraps
+from functools import lru_cache, partial
 
 import falcon
 from falcon import HTTP_BAD_REQUEST
 
 import hug._empty as empty
 import hug.api
-import hug.output_format
-import hug.types as types
-from hug import introspect
+from hug import introspect, types
 from hug.exceptions import InvalidTypeData
 from hug.format import parse_content_type
 from hug.types import (
     MarshmallowInputSchema,
     MarshmallowReturnSchema,
-    Multiple,
-    OneOf,
-    SmartBoolean,
     Text,
     text,
 )

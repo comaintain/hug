@@ -46,7 +46,6 @@ from types import ModuleType
 from wsgiref.simple_server import make_server
 
 import falcon
-from falcon import HTTP_METHODS
 
 import hug.defaults
 import hug.output_format

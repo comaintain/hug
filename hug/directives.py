@@ -25,8 +25,6 @@ OTHER DEALINGS IN THE SOFTWARE.
 from functools import partial
 from timeit import default_timer as python_timer
 
-from hug import introspect
-
 
 def _built_in_directive(directive):
     """Marks a callable as a built-in directive"""

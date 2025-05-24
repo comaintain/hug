@@ -18,16 +18,13 @@ THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABI
 CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 """
+import _thread as thread
 import importlib
 import os
-import subprocess
 import sys
-import tempfile
 import time
-from multiprocessing import Process
 from os.path import exists
 
-import _thread as thread
 from hug._version import current
 from hug.api import API
 from hug.route import cli
