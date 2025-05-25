@@ -371,7 +371,11 @@ class JSON(Type):
                 return json_converter.loads(value)
             except Exception:
                 raise ValueError("Incorrectly formatted JSON provided")
-        if type(value) is list:
+
+        # XXX: This is broken for the "body" parameter, which can already be a list of items.
+        # (if the `Content-Type` is `application/json` and the request body is a JSON array).
+        # Workaround: Check that all items are strings, this way at least lists of non-string items work.
+        if type(value) is list and all(isinstance(item, str) for item in value):
             # If Falcon is set to comma-separate entries, this segment joins them again.
             try:
                 fixed_value = ",".join(value)
