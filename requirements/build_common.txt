@@ -1,10 +1,10 @@
 -r common.txt
 flake8==3.7.7
-pytest==8.3.5
-pytest-cov==6.1.1
-pytest-xdist==3.6.1
-python-coveralls==2.9.3
+pytest>=7
+pytest-cov>=4
+pytest-xdist>=3.5
+python-coveralls>=2.9
 wheel
 PyJWT==1.7.1
-numpy==2.2.5
+numpy
 setuptools
