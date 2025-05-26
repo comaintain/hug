@@ -25,7 +25,6 @@ from functools import partial
 from io import BytesIO
 from urllib.parse import urlencode
 
-from falcon import HTTP_METHODS
 from falcon.testing import DEFAULT_HOST, StartResponseMock, create_environ
 
 from hug import output_format
@@ -95,12 +94,24 @@ def call(
     return response
 
 
-for method in HTTP_METHODS:
+
+def _make_tester(method):
     tester = partial(call, method)
     tester.__doc__ = """Simulates a round-trip HTTP {0} against the given API / URL""".format(
         method.upper()
     )
-    globals()[method.lower()] = tester
+    return tester
+
+
+connect = _make_tester("CONNECT")
+delete = _make_tester("DELETE")
+get = _make_tester("GET")
+head = _make_tester("HEAD")
+options = _make_tester("OPTIONS")
+patch = _make_tester("PATCH")
+post = _make_tester("POST")
+put = _make_tester("PUT")
+trace = _make_tester("TRACE")
 
 
 def cli(method, *args, api=None, module=None, **arguments):
