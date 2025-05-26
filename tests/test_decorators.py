@@ -66,7 +66,7 @@ def test_basic_call():
 def test_basic_call_on_method(hug_api):
     """Test to ensure the most basic call still works if applied to a method"""
 
-    class API(object):
+    class API:
         @hug.call(api=hug_api)
         def hello_world(self=None):
             return "Hello World!"
@@ -76,7 +76,7 @@ def test_basic_call_on_method(hug_api):
     assert api_instance.hello_world() == "Hello World!"
     assert hug.test.get(hug_api, "/hello_world").data == "Hello World!"
 
-    class API(object):
+    class API:
         def hello_world(self):
             return "Hello World!"
 
@@ -89,7 +89,7 @@ def test_basic_call_on_method(hug_api):
     assert api_instance.hello_world() == "Hello World!"
     assert hug.test.get(hug_api, "/hello_world").data == "Hello World!"
 
-    class API(object):
+    class API:
         def __init__(self):
             hug.call(api=hug_api)(self.hello_world_method)
 
@@ -582,7 +582,7 @@ def test_return_modifer():
 def test_custom_deserializer_support():
     """Ensure that custom desirializers work as expected"""
 
-    class CustomDeserializer(object):
+    class CustomDeserializer:
         def from_string(self, string):
             return "custom {}".format(string)
 
@@ -598,7 +598,7 @@ def test_marshmallow2_support():
     """Ensure that you can use Marshmallow style objects to control input and output validation and transformation"""
     MarshalResult = namedtuple("MarshalResult", ["data", "errors"])
 
-    class MarshmallowStyleObject(object):
+    class MarshmallowStyleObject:
         def dump(self, item):
             if item == "bad":
                 return MarshalResult("", "problems")
@@ -633,7 +633,7 @@ def test_marshmallow2_support():
     assert hug.test.get(api, "test_marshmallow_input", item="bacon").data == "Load Success"
     assert test_marshmallow_style() == "world"
 
-    class MarshmallowStyleObjectWithError(object):
+    class MarshmallowStyleObjectWithError:
         def dump(self, item):
             return "Dump Success"
 
@@ -653,7 +653,7 @@ def test_marshmallow2_support():
         "errors": {"item": {"type": "invalid"}}
     }
 
-    class MarshmallowStyleField(object):
+    class MarshmallowStyleField:
         def deserialize(self, value):
             return str(value)
 
@@ -668,7 +668,7 @@ def test_marshmallow2_support():
 def test_marshmallow3_support():
     """Ensure that you can use Marshmallow style objects to control input and output validation and transformation"""
 
-    class MarshmallowStyleObject(object):
+    class MarshmallowStyleObject:
         def dump(self, item):
             if item == "bad":
                 raise ValidationError("problems")
@@ -703,7 +703,7 @@ def test_marshmallow3_support():
     assert hug.test.get(api, "test_marshmallow_input", item="bacon").data == "Load Success"
     assert test_marshmallow_style() == "world"
 
-    class MarshmallowStyleObjectWithError(object):
+    class MarshmallowStyleObjectWithError:
         def dump(self, item):
             return "Dump Success"
 
@@ -723,7 +723,7 @@ def test_marshmallow3_support():
         "errors": {"item": {"type": "invalid"}}
     }
 
-    class MarshmallowStyleField(object):
+    class MarshmallowStyleField:
         def deserialize(self, value):
             return str(value)
 
@@ -1206,7 +1206,7 @@ def test_cli_with_directives():
 
 def test_cli_with_class_directives():
     @hug.directive()
-    class ClassDirective(object):
+    class ClassDirective:
         def __init__(self, *args, **kwargs):
             self.test = 1
 
@@ -1218,12 +1218,12 @@ def test_cli_with_class_directives():
     assert test() == 1
     assert hug.test.cli(test) == 1
 
-    class TestObject(object):
+    class TestObject:
         is_cleanup_launched = False
         last_exception = None
 
     @hug.directive()
-    class ClassDirectiveWithCleanUp(object):
+    class ClassDirectiveWithCleanUp:
         def __init__(self, *args, **kwargs):
             self.test_object = TestObject
 
@@ -1448,7 +1448,7 @@ def test_cli_with_args():
 def test_cli_using_method():
     """Test to ensure that attaching a cli to a class method works as expected"""
 
-    class API(object):
+    class API:
         def __init__(self):
             hug.cli()(self.hello_world_method)
 

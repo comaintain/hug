@@ -42,7 +42,7 @@ def function_with_nothing():
     pass
 
 
-class Object(object):
+class Object:
     def my_method(self):
         pass
 

@@ -75,7 +75,7 @@ def test_json():
     assert str(one_day.total_seconds()) in output
     assert now.isoformat() in output
 
-    class NewObject(object):
+    class NewObject:
         pass
 
     test_data["non_serializable"] = NewObject()
@@ -107,7 +107,7 @@ def test_json():
 
     assert hug.input_format.json(BytesIO(hug.output_format.json(b"\x9c"))) == "nA=="
 
-    class MyCrazyObject(object):
+    class MyCrazyObject:
         pass
 
     @hug.output_format.json_convert(MyCrazyObject)
@@ -177,7 +177,7 @@ def test_image():
 def test_file():
     """Ensure that it's possible to easily output files"""
 
-    class FakeResponse(object):
+    class FakeResponse:
         pass
 
     logo_path = os.path.join(BASE_DIRECTORY, "artwork", "logo.png")
@@ -234,7 +234,7 @@ def test_on_content_type():
         {"application/json": hug.output_format.json, "text/plain": hug.output_format.text}
     )
 
-    class FakeRequest(object):
+    class FakeRequest:
         content_type = "application/json"
 
     request = FakeRequest()
@@ -258,7 +258,7 @@ def test_accept():
         {"application/json": hug.output_format.json, "text/plain": hug.output_format.text}
     )
 
-    class FakeRequest(object):
+    class FakeRequest:
         accept = "application/json"
 
     request = FakeRequest()
@@ -319,7 +319,7 @@ def test_suffix():
         {".js": hug.output_format.json, ".html": hug.output_format.text}
     )
 
-    class FakeRequest(object):
+    class FakeRequest:
         path = "endpoint.js"
 
     request = FakeRequest()
@@ -343,7 +343,7 @@ def test_prefix():
         {"js/": hug.output_format.json, "html/": hug.output_format.text}
     )
 
-    class FakeRequest(object):
+    class FakeRequest:
         path = "js/endpoint"
 
     request = FakeRequest()

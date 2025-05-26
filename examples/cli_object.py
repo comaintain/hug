@@ -4,7 +4,7 @@ API = hug.API("git")
 
 
 @hug.object(name="git", version="1.0.0", api=API)
-class GIT(object):
+class GIT:
     """An example of command like calls via an Object"""
 
     @hug.object.cli

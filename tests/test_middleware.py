@@ -76,7 +76,7 @@ def test_session_middleware():
 def test_logging_middleware():
     output = []
 
-    class Logger(object):
+    class Logger:
         def info(self, content):
             output.append(content)
 

@@ -6,7 +6,7 @@ from hug.introspect import generate_accepted_kwargs
 DATA = {"request": None}
 
 
-class Timer(object):
+class Timer:
     def __init__(self, name):
         self.name = name
 

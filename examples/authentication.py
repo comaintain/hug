@@ -31,7 +31,7 @@ def basic_auth_api_call(user: hug.directives.user):
 
 # First, the user object stored in the context need not be a string,
 # but can be any Python object.
-class APIUser(object):
+class APIUser:
     """A minimal example of a rich User object"""
 
     def __init__(self, user_id, api_key):

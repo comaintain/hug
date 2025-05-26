@@ -9,7 +9,7 @@ engine = create_engine("sqlite:///:memory:")
 session_factory = scoped_session(sessionmaker(bind=engine))
 
 
-class SqlalchemyContext(object):
+class SqlalchemyContext:
     def __init__(self):
         self._db = session_factory()
 

@@ -30,7 +30,7 @@ import hug
 from hug import use
 
 
-class TestService(object):
+class TestService:
     """Test to ensure the base Service object works as a base Abstract service runner"""
 
     service = use.Service(version=1, timeout=100, raise_on=(500,))
@@ -92,7 +92,7 @@ class TestService(object):
             self.service.connect("endpoint")
 
 
-class TestHTTP(object):
+class TestHTTP:
     """Test to ensure the HTTP Service object enables pulling data from external HTTP services"""
 
     service = use.HTTP("http://www.google.com/", raise_on=(404, 400))
@@ -117,7 +117,7 @@ class TestHTTP(object):
             self.url_service.request("GET", "not_found", query="api")
 
 
-class TestLocal(object):
+class TestLocal:
     """Test to ensure the Local Service object enables pulling data from internal hug APIs with minimal overhead"""
 
     service = use.Local(__name__)
@@ -140,7 +140,7 @@ class TestLocal(object):
             assert self.service.get("exception")
 
 
-class TestSocket(object):
+class TestSocket:
     """Test to ensure the Socket Service object enables sending/receiving data from arbitrary server/port sockets"""
 
     on_unix = getattr(socket, "AF_UNIX", False)

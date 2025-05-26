@@ -29,7 +29,7 @@ def namer(name=None):
     return name
 
 
-class TestHTTP(object):
+class TestHTTP:
     """Tests the functionality provided by hug.interface.HTTP"""
 
     def test_urls(self):
@@ -63,11 +63,11 @@ class TestHTTP(object):
         )
 
 
-class TestLocal(object):
+class TestLocal:
     """Test to ensure hug.interface.Local functionality works as expected"""
 
     def test_local_method(self):
-        class MyObject(object):
+        class MyObject:
             @hug.local()
             def my_method(self, argument_1: hug.types.number):
                 return argument_1

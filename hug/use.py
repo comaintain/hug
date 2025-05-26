@@ -37,7 +37,7 @@ Response = namedtuple("Response", ("data", "status_code", "headers"))
 Request = namedtuple("Request", ("content_length", "stream", "params"))
 
 
-class Service(object):
+class Service:
     """Defines the base concept of a consumed service.
         This is to enable encapsulating the logic of calling a service so usage can be independant of the interface
     """

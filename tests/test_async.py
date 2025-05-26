@@ -54,7 +54,7 @@ def tested_nested_basic_call_async(loop):
 def test_basic_call_on_method_async(loop):
     """Test to ensure the most basic call still works if applied to a method"""
 
-    class API(object):
+    class API:
         @hug.call()
         async def hello_world(self=None):
             return "Hello World!"
@@ -68,7 +68,7 @@ def test_basic_call_on_method_async(loop):
 def test_basic_call_on_method_through_api_instance_async(loop):
     """Test to ensure instance method calling via async works as expected"""
 
-    class API(object):
+    class API:
         def hello_world(self):
             return "Hello World!"
 
@@ -85,7 +85,7 @@ def test_basic_call_on_method_through_api_instance_async(loop):
 def test_basic_call_on_method_registering_without_decorator_async(loop):
     """Test to ensure async methods can be used without decorator"""
 
-    class API(object):
+    class API:
         def __init__(self):
             hug.call()(self.hello_world_method)
 

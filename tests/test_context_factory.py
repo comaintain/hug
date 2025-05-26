@@ -9,7 +9,7 @@ import hug
 module = sys.modules[__name__]
 
 
-class RequirementFailed(object):
+class RequirementFailed:
     def __str__(self):
         return "requirement failed"
 
@@ -18,7 +18,7 @@ class CustomException(Exception):
     pass
 
 
-class TestContextFactoryLocal(object):
+class TestContextFactoryLocal:
     def test_lack_requirement(self):
         self.custom_context = dict(test="context")
 
@@ -193,7 +193,7 @@ class TestContextFactoryLocal(object):
         assert "launched_delete_context" in custom_context
 
 
-class TestContextFactoryCLI(object):
+class TestContextFactoryCLI:
     def test_lack_requirement(self):
         custom_context = dict(test="context")
 
@@ -371,7 +371,7 @@ class TestContextFactoryCLI(object):
         assert "launched_delete_context" in custom_context
 
 
-class TestContextFactoryHTTP(object):
+class TestContextFactoryHTTP:
     def test_lack_requirement(self):
         custom_context = dict(test="context")
 

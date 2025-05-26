@@ -33,7 +33,7 @@ def _built_in_directive(directive):
 
 
 @_built_in_directive
-class Timer(object):
+class Timer:
     """Keeps track of time surpased since instantiation, outputed by doing float(instance)"""
 
     __slots__ = ("start", "round_to")
@@ -105,7 +105,7 @@ def cors(support="*", response=None, **kwargs):
 
 
 @_built_in_directive
-class CurrentAPI(object):
+class CurrentAPI:
     """Returns quick access to all api functions on the current version of the api"""
 
     __slots__ = ("api_version", "api")

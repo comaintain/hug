@@ -131,7 +131,7 @@ def request_middleware(api=None):
     def decorator(middleware_method):
         apply_to_api = hug.API(api) if api else hug.api.from_object(middleware_method)
 
-        class MiddlewareRouter(object):
+        class MiddlewareRouter:
             __slots__ = ()
 
             def process_request(self, request, response):
@@ -149,7 +149,7 @@ def response_middleware(api=None):
     def decorator(middleware_method):
         apply_to_api = hug.API(api) if api else hug.api.from_object(middleware_method)
 
-        class MiddlewareRouter(object):
+        class MiddlewareRouter:
             __slots__ = ()
 
             def process_response(self, request, response, resource, _req_succeeded):
@@ -167,7 +167,7 @@ def reqresp_middleware(api=None):
     def decorator(middleware_generator):
         apply_to_api = hug.API(api) if api else hug.api.from_object(middleware_generator)
 
-        class MiddlewareRouter(object):
+        class MiddlewareRouter:
             __slots__ = ("gen",)
 
             def process_request(self, request, response):

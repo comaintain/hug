@@ -36,7 +36,7 @@ from hug.routing import (
 api = hug.API(__name__)
 
 
-class TestRouter(object):
+class TestRouter:
     """A collection of tests to ensure the base Router object works as expected"""
 
     route = Router(transform="transform", output="output")

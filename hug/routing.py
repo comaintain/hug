@@ -32,7 +32,7 @@ import hug.interface
 import hug.output_format
 
 
-class Router(object):
+class Router:
     """The base chainable router object"""
 
     __slots__ = ("route",)

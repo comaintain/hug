@@ -23,7 +23,7 @@ import uuid
 from datetime import datetime
 
 
-class SessionMiddleware(object):
+class SessionMiddleware:
     """Simple session middleware.
 
     Injects a session dictionary into the context of a request, sets a session cookie,
@@ -106,7 +106,7 @@ class SessionMiddleware(object):
         )
 
 
-class LogMiddleware(object):
+class LogMiddleware:
     """A middleware that logs all incoming requests and outgoing responses that make their way through the API"""
 
     __slots__ = ("logger",)
@@ -141,7 +141,7 @@ class LogMiddleware(object):
         self.logger.info(self._generate_combined_log(request, response))
 
 
-class CORSMiddleware(object):
+class CORSMiddleware:
     """A middleware for allowing cross-origin request sharing (CORS)
 
     Adds appropriate Access-Control-* headers to the HTTP responses returned from the hug API,

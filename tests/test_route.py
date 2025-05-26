@@ -36,7 +36,7 @@ def test_simple_class_based_view():
     """Test creating class based routers"""
 
     @hug.object.urls("/endpoint", requires=())
-    class MyClass(object):
+    class MyClass:
         @hug.object.get()
         def my_method(self):
             return "hi there!"
@@ -53,7 +53,7 @@ def test_url_inheritance():
     """Test creating class based routers"""
 
     @hug.object.urls("/endpoint", requires=(), versions=1)
-    class MyClass(object):
+    class MyClass:
         @hug.object.urls("inherits_base")
         def my_method(self):
             return "hi there!"
@@ -76,7 +76,7 @@ def test_simple_class_based_method_view():
     """Test creating class based routers using method mappings"""
 
     @hug.object.http_methods()
-    class EndPoint(object):
+    class EndPoint:
         def get(self):
             return "hi there!"
 
@@ -91,7 +91,7 @@ def test_routing_class_based_method_view_with_sub_routing():
     """Test creating class based routers using method mappings, then overriding url on sub method"""
 
     @hug.object.http_methods()
-    class EndPoint(object):
+    class EndPoint:
         def get(self):
             return "hi there!"
 
@@ -107,7 +107,7 @@ def test_routing_class_with_cli_commands():
     """Basic operation test"""
 
     @hug.object(name="git", version="1.0.0")
-    class GIT(object):
+    class GIT:
         """An example of command like calls via an Object"""
 
         @hug.object.cli
@@ -126,7 +126,7 @@ def test_routing_class_based_method_view_with_cli_routing():
     """Test creating class based routers using method mappings exposing cli endpoints"""
 
     @hug.object.http_methods()
-    class EndPoint(object):
+    class EndPoint:
         @hug.object.cli
         def get(self):
             return "hi there!"
@@ -142,7 +142,7 @@ def test_routing_class_based_method_view_with_cli_routing():
 def test_routing_instance():
     """Test to ensure its possible to route a class after it is instanciated"""
 
-    class EndPoint(object):
+    class EndPoint:
         @hug.object
         def one(self):
             return "one"
@@ -156,7 +156,7 @@ def test_routing_instance():
     assert hug.test.get(api, "two").data == 2
 
 
-class TestAPIRouter(object):
+class TestAPIRouter:
     """Test to ensure the API router enables easily reusing all other routing types while routing to an API"""
 
     router = hug.route.API(__name__)

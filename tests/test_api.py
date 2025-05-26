@@ -26,7 +26,7 @@ import hug
 api = hug.API(__name__)
 
 
-class TestAPI(object):
+class TestAPI:
     """A collection of tests to ensure the hug API object interacts as expected"""
 
     def test_singleton(self):

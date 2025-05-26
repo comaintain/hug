@@ -104,7 +104,7 @@ class Object(http):
         return method
 
 
-class API(object):
+class API:
     """Provides a convient way to route functions to a single API independent of where they live"""
 
     __slots__ = ("api",)

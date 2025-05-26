@@ -42,7 +42,7 @@ except ImportError:
         pass
 
 
-class Type(object):
+class Type:
     """Defines the base hug concept of a type for use in function annotation.
        Override `__call__` to define how the type should be transformed and validated
     """
@@ -595,7 +595,7 @@ class Nullable(Chain):
             return super(Nullable, self).__call__(value)
 
 
-class TypedProperty(object):
+class TypedProperty:
     """class for building property objects for schema objects"""
 
     __slots__ = ("name", "type_func")
@@ -636,7 +636,7 @@ class NewTypeMeta(type):
         super(NewTypeMeta, cls).__init__(name, bases, nmspc)
 
 
-class Schema(object, metaclass=NewTypeMeta):
+class Schema(metaclass=NewTypeMeta):
     """Schema for creating complex types using hug types"""
 
     __slots__ = ()

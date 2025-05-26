@@ -42,7 +42,7 @@ def setup(api=None):
     ]
 
     for f in file_list:
-        with open(os.path.join(dir_a, f[0]), mode="wt") as fo:
+        with open(os.path.join(dir_a, f[0]), mode="w") as fo:
             fo.write(f[1])
 
     # populate directory b with binary file

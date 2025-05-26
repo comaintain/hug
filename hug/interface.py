@@ -58,7 +58,7 @@ def asyncio_call(function, *args, **kwargs):
     return function.result()
 
 
-class Interfaces(object):
+class Interfaces:
     """Defines the per-function singleton applied to hugged functions defining common data needed by all interfaces"""
 
     def __init__(self, function, args=None):
@@ -124,7 +124,7 @@ class Interfaces(object):
         return asyncio_call(__hug_internal_self._function, *args, **kwargs)
 
 
-class Interface(object):
+class Interface:
     """Defines the basic hug interface object, which is responsible for wrapping a user defined function and providing
        all the info requested in the function as well as the route
 

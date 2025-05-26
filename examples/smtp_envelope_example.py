@@ -3,7 +3,7 @@ import hug
 
 
 @hug.directive()
-class SMTP(object):
+class SMTP:
     def __init__(self, *args, **kwargs):
         self.smtp = envelopes.SMTP(host="127.0.0.1")
         self.envelopes_to_send = list()
@@ -21,9 +21,9 @@ class SMTP(object):
 @hug.get("/hello")
 def send_hello_email(smtp: SMTP):
     envelope = envelopes.Envelope(
-        from_addr=(u"me@example.com", u"From me"),
-        to_addr=(u"world@example.com", u"To World"),
-        subject=u"Hello",
-        text_body=u"World!",
+        from_addr=("me@example.com", "From me"),
+        to_addr=("world@example.com", "To World"),
+        subject="Hello",
+        text_body="World!",
     )
     smtp.send_envelope(envelope)

@@ -1,7 +1,7 @@
 import cherrypy
 
 
-class Root(object):
+class Root:
     @cherrypy.expose
     def text(self):
         return "Hello, world!"

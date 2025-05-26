@@ -79,7 +79,7 @@ INTRO = """
 )
 
 
-class InterfaceAPI(object):
+class InterfaceAPI:
     """Defines the per-interface API which defines all shared information for a specific interface, and how it should
         be exposed
     """
@@ -520,7 +520,7 @@ class ModuleSingleton(type):
         return module.__hug__
 
 
-class API(object, metaclass=ModuleSingleton):
+class API(metaclass=ModuleSingleton):
     """Stores the information necessary to expose API calls within this module externally"""
 
     __slots__ = (
