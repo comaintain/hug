@@ -78,7 +78,7 @@ with open("README.md", encoding="utf-8") as f:  # Loads in the README for PyPI
 
 setup(
     name="hug-upgraded",
-    version="2.7.1",
+    version="2.8.0",
     description="(🍴Fork for newer Python version compatibility) "
     "A Python framework that makes developing APIs "
     "as simple as possible, but no simpler ",
