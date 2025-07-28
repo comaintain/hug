@@ -61,8 +61,8 @@ def asyncio_call(function, *args, **kwargs):
 class Interfaces:
     """Defines the per-function singleton applied to hugged functions defining common data needed by all interfaces"""
 
-    def __init__(self, function, args=None):
-        self.api = hug.api.from_object(function)
+    def __init__(self, function, args=None, api=None):
+        self.api = api or hug.api.from_object(function)
         self.spec = getattr(function, "original", function)
         self.arguments = introspect.arguments(function)
         self.name = introspect.name(function)
@@ -160,7 +160,8 @@ class Interface:
             self.examples = route["examples"]
         function_args = route.get("args")
         if not hasattr(function, "interface"):
-            function.__dict__["interface"] = Interfaces(function, function_args)
+            api = route.get("api", None) or hug.api.from_object(function)
+            function.__dict__["interface"] = Interfaces(function, function_args, api)
 
         self.interface = function.interface
         self.requires = route.get("requires", ())
