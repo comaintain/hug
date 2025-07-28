@@ -19,6 +19,7 @@ CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFT
 OTHER DEALINGS IN THE SOFTWARE.
 
 """
+
 import json
 import urllib
 from datetime import datetime
@@ -174,7 +175,7 @@ def test_text():
 
 def test_uuid():
     """Tests that hug's text validator correctly handles UUID values
-       Examples were taken from https://docs.python.org/3/library/uuid.html"""
+    Examples were taken from https://docs.python.org/3/library/uuid.html"""
 
     assert hug.types.uuid("{12345678-1234-5678-1234-567812345678}") == UUID(
         "12345678-1234-5678-1234-567812345678"

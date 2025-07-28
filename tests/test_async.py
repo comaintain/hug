@@ -26,7 +26,7 @@ api = hug.API(__name__)
 
 
 def test_basic_call_async(loop):
-    """ The most basic Happy-Path test for Hug APIs using async """
+    """The most basic Happy-Path test for Hug APIs using async"""
 
     @hug.call()
     async def hello_world():

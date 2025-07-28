@@ -1,4 +1,5 @@
 """Defines fixtures that can be used to streamline tests and / or define dependencies"""
+
 from collections import namedtuple
 from random import randint
 

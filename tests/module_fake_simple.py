@@ -1,4 +1,5 @@
 """Simple 1 endpoint Fake HUG API module usable for testing importation of modules"""
+
 import hug
 
 

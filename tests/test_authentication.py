@@ -19,6 +19,7 @@ CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFT
 OTHER DEALINGS IN THE SOFTWARE.
 
 """
+
 from base64 import b64encode
 
 from falcon import HTTPUnauthorized

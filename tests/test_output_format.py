@@ -19,6 +19,7 @@ CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFT
 OTHER DEALINGS IN THE SOFTWARE.
 
 """
+
 import os
 from collections import namedtuple
 from datetime import datetime, timedelta
