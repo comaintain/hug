@@ -20,6 +20,7 @@ CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFT
 OTHER DEALINGS IN THE SOFTWARE.
 
 """
+
 import os
 from collections import OrderedDict
 from urllib.parse import urljoin
@@ -72,7 +73,7 @@ class Router:
 
     def transform(self, function, **overrides):
         """Sets the function that should be used to transform the returned Python structure into something
-           serializable by specified output format
+        serializable by specified output format
         """
         return self.where(transform=function, **overrides)
 

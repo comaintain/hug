@@ -19,6 +19,7 @@ CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFT
 OTHER DEALINGS IN THE SOFTWARE.
 
 """
+
 import argparse
 import asyncio
 import os
@@ -117,7 +118,7 @@ class Interfaces:
             self.input_transformations[name] = transformer
 
     def __call__(__hug_internal_self, *args, **kwargs):  # noqa: N805
-        """"Calls the wrapped function, uses __hug_internal_self incase self is passed in as a kwarg from the wrapper"""
+        """ "Calls the wrapped function, uses __hug_internal_self incase self is passed in as a kwarg from the wrapper"""
         if not __hug_internal_self.is_coroutine:
             return __hug_internal_self._function(*args, **kwargs)
 
@@ -126,9 +127,9 @@ class Interfaces:
 
 class Interface:
     """Defines the basic hug interface object, which is responsible for wrapping a user defined function and providing
-       all the info requested in the function as well as the route
+    all the info requested in the function as well as the route
 
-       A Interface object should be created for every kind of protocal hug supports
+    A Interface object should be created for every kind of protocal hug supports
     """
 
     __slots__ = (
@@ -285,8 +286,8 @@ class Interface:
     def check_requirements(self, request=None, response=None, context=None):
         """Checks to see if all requirements set pass
 
-           if all requirements pass nothing will be returned
-           otherwise, the error reported will be returned
+        if all requirements pass nothing will be returned
+        otherwise, the error reported will be returned
         """
         for requirement in self.requires:
             conclusion = requirement(

@@ -19,6 +19,8 @@ CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFT
 OTHER DEALINGS IN THE SOFTWARE.
 
 """
+
+
 def all(*validators):
     """Validation only succeeds if all passed in validators return no errors"""
 

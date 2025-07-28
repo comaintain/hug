@@ -19,6 +19,7 @@ CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFT
 OTHER DEALINGS IN THE SOFTWARE.
 
 """
+
 import base64
 import mimetypes
 import os
@@ -301,7 +302,7 @@ def video(video_type, video_mime, doc=None):
     return video_handler
 
 
-for (video_type, video_mime) in VIDEO_TYPES:
+for video_type, video_mime in VIDEO_TYPES:
     globals()["{0}_video".format(video_type)] = video(video_type, video_mime)
 
 
@@ -329,11 +330,11 @@ def on_content_type(
     handlers, default=None, error="The requested content type does not match any of those allowed"
 ):
     """Returns a content in a different format based on the clients provided content type,
-       should pass in a dict with the following format:
+    should pass in a dict with the following format:
 
-            {'[content-type]': action,
-             ...
-            }
+         {'[content-type]': action,
+          ...
+         }
     """
 
     def output_type(data, request, response):
@@ -367,11 +368,11 @@ def accept(
     handlers, default=None, error="The requested content type does not match any of those allowed"
 ):
     """Returns a content in a different format based on the clients defined accepted content type,
-       should pass in a dict with the following format:
+    should pass in a dict with the following format:
 
-            {'[content-type]': action,
-             ...
-            }
+         {'[content-type]': action,
+          ...
+         }
     """
 
     def output_type(data, request, response):
@@ -404,11 +405,11 @@ def suffix(
     handlers, default=None, error="The requested suffix does not match any of those allowed"
 ):
     """Returns a content in a different format based on the suffix placed at the end of the URL route
-       should pass in a dict with the following format:
+    should pass in a dict with the following format:
 
-            {'[suffix]': action,
-             ...
-            }
+         {'[suffix]': action,
+          ...
+         }
     """
 
     def output_type(data, request, response):
@@ -436,11 +437,11 @@ def prefix(
     handlers, default=None, error="The requested prefix does not match any of those allowed"
 ):
     """Returns a content in a different format based on the prefix placed at the end of the URL route
-       should pass in a dict with the following format:
+    should pass in a dict with the following format:
 
-            {'[prefix]': action,
-             ...
-            }
+         {'[prefix]': action,
+          ...
+         }
     """
 
     def output_type(data, request, response):

@@ -19,9 +19,11 @@ CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFT
 OTHER DEALINGS IN THE SOFTWARE.
 
 """
+
 import asyncio
 import sys
 from collections import OrderedDict, namedtuple
+
 
 # Own implementation of distutils.util.strtobool
 # See PEP632 for more info.
@@ -39,6 +41,7 @@ def strtobool(val) -> bool:
         return False
     else:
         raise ValueError("invalid truth value %r" % (val,))
+
 
 from functools import partial
 from itertools import chain
@@ -81,7 +84,7 @@ INTRO = """
 
 class InterfaceAPI:
     """Defines the per-interface API which defines all shared information for a specific interface, and how it should
-        be exposed
+    be exposed
     """
 
     __slots__ = ("api",)

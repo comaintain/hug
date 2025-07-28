@@ -19,18 +19,19 @@ CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFT
 OTHER DEALINGS IN THE SOFTWARE.
 
 """
+
 from hug.decorators import auto_kwargs
 
 
 def content_type(transformers, default=None):
     """Returns a different transformer depending on the content type passed in.
-       If none match and no default is given no transformation takes place.
+    If none match and no default is given no transformation takes place.
 
-       should pass in a dict with the following format:
+    should pass in a dict with the following format:
 
-            {'[content-type]': transformation_action,
-             ...
-            }
+         {'[content-type]': transformation_action,
+          ...
+         }
     """
     transformers = {
         content_type: auto_kwargs(transformer) if transformer else transformer
@@ -50,13 +51,13 @@ def content_type(transformers, default=None):
 
 def suffix(transformers, default=None):
     """Returns a different transformer depending on the suffix at the end of the requested URL.
-       If none match and no default is given no transformation takes place.
+    If none match and no default is given no transformation takes place.
 
-       should pass in a dict with the following format:
+    should pass in a dict with the following format:
 
-            {'[suffix]': transformation_action,
-             ...
-            }
+         {'[suffix]': transformation_action,
+          ...
+         }
     """
     transformers = {
         suffix: auto_kwargs(transformer) if transformer else transformer
@@ -79,13 +80,13 @@ def suffix(transformers, default=None):
 
 def prefix(transformers, default=None):
     """Returns a different transformer depending on the prefix at the end of the requested URL.
-       If none match and no default is given no transformation takes place.
+    If none match and no default is given no transformation takes place.
 
-       should pass in a dict with the following format:
+    should pass in a dict with the following format:
 
-            {'[prefix]': transformation_action,
-             ...
-            }
+         {'[prefix]': transformation_action,
+          ...
+         }
     """
     transformers = {
         prefix: auto_kwargs(transformer) if transformer else transformer
@@ -109,9 +110,9 @@ def prefix(transformers, default=None):
 def all(*transformers):
     """Returns the results of applying all passed in transformers to data
 
-       should pass in list of transformers
+    should pass in list of transformers
 
-            [transformer_1, transformer_2...]
+         [transformer_1, transformer_2...]
     """
     transformers = tuple(auto_kwargs(transformer) for transformer in transformers)
 

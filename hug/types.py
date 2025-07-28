@@ -19,6 +19,7 @@ CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFT
 OTHER DEALINGS IN THE SOFTWARE.
 
 """
+
 import uuid as native_uuid
 from decimal import Decimal
 from packaging.version import Version
@@ -44,7 +45,7 @@ except ImportError:
 
 class Type:
     """Defines the base hug concept of a type for use in function annotation.
-       Override `__call__` to define how the type should be transformed and validated
+    Override `__call__` to define how the type should be transformed and validated
     """
 
     _hug_type = True
@@ -649,7 +650,7 @@ class Schema(metaclass=NewTypeMeta):
 
     def __init__(self, json, force=False):
         if self != json:
-            for (key, value) in json.items():
+            for key, value in json.items():
                 if force:
                     key = "_" + key
                 setattr(self, key, value)

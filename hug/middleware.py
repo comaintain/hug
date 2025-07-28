@@ -17,6 +17,7 @@ CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFT
 OTHER DEALINGS IN THE SOFTWARE.
 
 """
+
 import logging
 import re
 import uuid
@@ -78,7 +79,7 @@ class SessionMiddleware:
 
     def process_request(self, request, response):
         """Get session ID from cookie, load corresponding session data from coupled store and inject session data into
-            the request context.
+        the request context.
         """
         sid = request.cookies.get(self.cookie_name, None)
         data = {}

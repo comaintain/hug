@@ -20,6 +20,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 """
 
+
 class InvalidTypeData(Exception):
     """Should be raised when data passed in doesn't match a types expectations"""
 

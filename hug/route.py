@@ -19,6 +19,7 @@ CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFT
 OTHER DEALINGS IN THE SOFTWARE.
 
 """
+
 from functools import partial
 from types import FunctionType, MethodType
 
@@ -122,7 +123,7 @@ class API:
     def urls(self, *args, **kwargs):
         """DEPRECATED: for backwords compatibility with < hug 2.2.0. `API.http` should be used instead.
 
-           Starts the process of building a new URL HTTP route linked to this API instance
+        Starts the process of building a new URL HTTP route linked to this API instance
         """
         return self.http(*args, **kwargs)
 
@@ -229,6 +230,7 @@ def _make_method_handler(method: str) -> "type[http]":
         method.upper()
     )
     return method_handler
+
 
 connect = _make_method_handler("CONNECT")
 delete = _make_method_handler("DELETE")

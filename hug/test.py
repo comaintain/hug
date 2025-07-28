@@ -19,6 +19,7 @@ CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFT
 OTHER DEALINGS IN THE SOFTWARE.
 
 """
+
 import ast
 import sys
 from functools import partial
@@ -92,7 +93,6 @@ def call(
         if "application/json" in response.content_type:
             response.data = json.loads(response.data)
     return response
-
 
 
 def _make_tester(method):

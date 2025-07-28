@@ -19,6 +19,7 @@ CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFT
 OTHER DEALINGS IN THE SOFTWARE.
 
 """
+
 import re
 import socket
 from collections import namedtuple
@@ -39,7 +40,7 @@ Request = namedtuple("Request", ("content_length", "stream", "params"))
 
 class Service:
     """Defines the base concept of a consumed service.
-        This is to enable encapsulating the logic of calling a service so usage can be independant of the interface
+    This is to enable encapsulating the logic of calling a service so usage can be independant of the interface
     """
 
     __slots__ = ("timeout", "raise_on", "version")
