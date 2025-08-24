@@ -375,11 +375,20 @@ class HTTPInterfaceAPI(InterfaceAPI):
 
     def server(self, default_not_found=True, base_url=None):
         """Returns a WSGI compatible API server for the given Hug API module"""
-        falcon_api = self.falcon = falcon.API(middleware=self.middleware)
+
+        def _passthrough_handler(req, resp, ex, params):
+            raise
+
+        falcon_api = self.falcon = falcon.App(middleware=self.middleware)
         if not self.api.future:
             falcon_api.req_options.keep_blank_qs_values = False
             falcon_api.req_options.auto_parse_qs_csv = True
             falcon_api.req_options.strip_url_path_trailing_slash = True
+
+        # NOTE(vytas): Hug does not expect the generic error handler (added in Falcon 3.0).
+        #   We could remove it from falcon_api's internal structures, but a cleaner workaround
+        #   is to simply replace it with a passthrough handler that always reraises.
+        falcon_api.add_error_handler(Exception, _passthrough_handler)
 
         default_not_found = self.documentation_404() if default_not_found is True else None
         base_url = self.base_url if base_url is None else base_url
@@ -419,13 +428,17 @@ class HTTPInterfaceAPI(InterfaceAPI):
                         )
 
                 router = namedtuple("Router", router.keys())(**router)
-                falcon_api.add_route(router_base_url + url, router)
+
+                # NOTE(vytas): If strip_url_path_trailing_slash is enabled, uri_template should
+                #   be provided without a trailing slash. To ensure this, we rstrip it from url.
+                #   See also: https://falcon.readthedocs.io/en/latest/api/app.html#falcon.App.add_route
+                falcon_api.add_route(router_base_url + url.rstrip('/'), router)
                 if self.versions and self.versions != (None,):
-                    falcon_api.add_route(router_base_url + "/v{api_version}" + url, router)
+                    falcon_api.add_route(router_base_url + "/v{api_version}" + url.rstrip('/'), router)
 
         def error_serializer(request, response, error):
             response.content_type = self.output_format.content_type
-            response.body = self.output_format(
+            response.text = self.output_format(
                 {"errors": {error.title: error.description}}, request, response
             )
 

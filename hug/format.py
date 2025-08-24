@@ -23,7 +23,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 from __future__ import absolute_import
 
 import re
-from cgi import parse_header
+
+from falcon import parse_header
 
 from hug import _empty as empty
 

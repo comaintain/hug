@@ -20,10 +20,10 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 """
 import os
-from cgi import parse_header
 from io import BytesIO
 
 import requests
+from falcon import parse_header
 
 import hug
 

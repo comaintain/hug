@@ -22,9 +22,9 @@ OTHER DEALINGS IN THE SOFTWARE.
 from __future__ import absolute_import
 
 import re
-from cgi import parse_multipart
 from urllib.parse import parse_qs as urlencoded_converter
 
+from falcon.media.multipart import MultipartFormHandler
 from falcon.util.uri import parse_query_string
 
 from hug.format import content_type, underscore
@@ -65,19 +65,21 @@ def json_underscore(body, charset="utf-8", **kwargs):
 @content_type("application/x-www-form-urlencoded")
 def urlencoded(body, charset="ascii", **kwargs):
     """Converts query strings into native Python objects"""
-    return parse_query_string(text(body, charset=charset), False)
+    return parse_query_string(text(body, charset=charset), keep_blank=False, csv=True)
 
 
 @content_type("multipart/form-data")
 def multipart(body, content_length=0, **header_params):
     """Converts multipart form data into native Python objects"""
-    header_params.setdefault("CONTENT-LENGTH", content_length)
-    if header_params and "boundary" in header_params:
-        if type(header_params["boundary"]) is str:
-            header_params["boundary"] = header_params["boundary"].encode()
+    parser = MultipartFormHandler()
+    parser.parse_options.max_body_part_count = 0
 
-    form = parse_multipart((body.stream if hasattr(body, "stream") else body), header_params)
-    for key, value in form.items():
-        if type(value) is list and len(value) == 1:
-            form[key] = value[0]
-    return form
+    stream = getattr(body, "stream", body)
+    boundary = header_params.get("boundary", "")
+    content_type = f"multipart/form-data; boundary={boundary}"
+    content_length = header_params.get("CONTENT-LENGTH", content_length)
+
+    return {
+        part.name: part.stream.read()
+        for part in parser.deserialize(stream, content_type, int(content_length))
+    }

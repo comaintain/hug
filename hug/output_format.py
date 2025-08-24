@@ -341,7 +341,7 @@ def on_content_type(
     def output_type(data, request, response):
         handler = handlers.get(request.content_type.split(";")[0], default)
         if not handler:
-            raise falcon.HTTPNotAcceptable(error)
+            raise falcon.HTTPNotAcceptable(title=error)
 
         response.content_type = handler.content_type
         return handler(data, request=request, response=response)
@@ -390,7 +390,7 @@ def accept(
                     break
 
         if not handler:
-            raise falcon.HTTPNotAcceptable(error)
+            raise falcon.HTTPNotAcceptable(title=error)
 
         response.content_type = handler.content_type
         return handler(data, request=request, response=response)
@@ -422,7 +422,7 @@ def suffix(
                 break
 
         if not handler:
-            raise falcon.HTTPNotAcceptable(error)
+            raise falcon.HTTPNotAcceptable(title=error)
 
         response.content_type = handler.content_type
         return handler(data, request=request, response=response)
@@ -454,7 +454,7 @@ def prefix(
                 break
 
         if not handler:
-            raise falcon.HTTPNotAcceptable(error)
+            raise falcon.HTTPNotAcceptable(title=error)
 
         response.content_type = handler.content_type
         return handler(data, request=request, response=response)

@@ -306,7 +306,7 @@ def test_accept_with_http_errors():
 
     @hug.get("/500", api=api)
     def error_500():
-        raise hug.HTTPInternalServerError("500 Internal Server Error", "This is an example")
+        raise hug.HTTPInternalServerError(title="500 Internal Server Error", description="This is an example")
 
     response = hug.test.get(api, "/500")
     assert response.status == "500 Internal Server Error"
