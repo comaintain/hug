@@ -432,9 +432,12 @@ class HTTPInterfaceAPI(InterfaceAPI):
                 # NOTE(vytas): If strip_url_path_trailing_slash is enabled, uri_template should
                 #   be provided without a trailing slash. To ensure this, we rstrip it from url.
                 #   See also: https://falcon.readthedocs.io/en/latest/api/app.html#falcon.App.add_route
-                falcon_api.add_route(router_base_url + url.rstrip('/'), router)
+                # NOTE(vytas): I'm not sure if url can be '/' here, but adding a check just in case.
+                route_url = url.rstrip('/') if url != '/' else url
+
+                falcon_api.add_route(router_base_url + route_url, router)
                 if self.versions and self.versions != (None,):
-                    falcon_api.add_route(router_base_url + "/v{api_version}" + url.rstrip('/'), router)
+                    falcon_api.add_route(router_base_url + "/v{api_version}" + route_url, router)
 
         def error_serializer(request, response, error):
             response.content_type = self.output_format.content_type
