@@ -1,0 +1,53 @@
+# Run various tox environments.
+name: tox
+
+on:
+  push:
+    branches:
+      - "*"
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  run-tox:
+    name: tox -e ${{ matrix.tox.env }}
+    runs-on: "ubuntu-latest"
+    strategy:
+      fail-fast: false
+      matrix:
+        default-os:
+          - "ubuntu-latest"
+        tox:
+          - env: py310-marshmallow3
+            python-version: "3.10"
+          - env: py311-marshmallow3
+            python-version: "3.11"
+          - env: py312-marshmallow3
+            python-version: "3.12"
+          - env: py313-marshmallow3
+            python-version: "3.13"
+          - env: py314-marshmallow3
+            python-version: "3.14.0-rc.2 - 3.14.0"
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.tox.python-version }}
+
+      - name: Install Python dependencies
+        run: |
+          pip install --upgrade pip
+          pip install --upgrade setuptools tox wheel
+          python --version
+          pip --version
+          tox --version
+
+      - name: Run tox
+        run: tox -e ${{ matrix.tox.env }}
