@@ -19,6 +19,13 @@ jobs:
         default-os:
           - "ubuntu-latest"
         tox:
+          - env: py310-marshmallow3-falcon3
+            python-version: "3.10"
+          - env: py311-marshmallow3-falcon3
+            python-version: "3.11"
+          - env: py312-marshmallow3-falcon3
+            python-version: "3.12"
+
           - env: py310-marshmallow3
             python-version: "3.10"
           - env: py311-marshmallow3
@@ -28,7 +35,7 @@ jobs:
           - env: py313-marshmallow3
             python-version: "3.13"
           - env: py314-marshmallow3
-            python-version: "3.14.0-rc.2 - 3.14.0"
+            python-version: "3.14.0-rc.3 - 3.14.0"
 
     steps:
       - name: Checkout repo

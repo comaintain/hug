@@ -24,7 +24,10 @@ from __future__ import absolute_import
 
 import re
 
-from falcon import parse_header
+try:
+    from falcon import parse_header
+except ImportError:
+    from cgi import parse_header
 
 from hug import _empty as empty
 

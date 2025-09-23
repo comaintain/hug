@@ -23,7 +23,11 @@ import os
 from io import BytesIO
 
 import requests
-from falcon import parse_header
+
+try:
+    from falcon import parse_header
+except ImportError:
+    from cgi import parse_header
 
 import hug
 
