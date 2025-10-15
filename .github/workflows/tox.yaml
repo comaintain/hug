@@ -17,25 +17,19 @@ jobs:
       fail-fast: false
       matrix:
         tox:
+          # Falcon 3
           - env: py37-marshmallow3-falcon3
             python-version: "3.7"
-          - env: py310-marshmallow3-falcon3
-            python-version: "3.10"
-          - env: py311-marshmallow3-falcon3
-            python-version: "3.11"
           - env: py312-marshmallow3-falcon3
             python-version: "3.12"
 
-          - env: py310-marshmallow3
-            python-version: "3.10"
-          - env: py311-marshmallow3
-            python-version: "3.11"
-          - env: py312-marshmallow3
-            python-version: "3.12"
+          # Falcon 4
+          - env: py38-marshmallow3
+            python-version: "3.8"
           - env: py313-marshmallow3
             python-version: "3.13"
           - env: py314-marshmallow3
-            python-version: "3.14.0-rc.3 - 3.14.0"
+            python-version: "3.14"
 
     steps:
       - name: Checkout repo
