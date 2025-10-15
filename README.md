@@ -1,3 +1,11 @@
+# Version notice 
+
+⚠️ This is the development branch of `hug-upgraded`, which might contain minor backwards incompatibilities with previous versions, due to requiring Falcon >= 3.
+
+For a mostly backwards compatible version, see the [`v2.x`](https://github.com/comaintain/hug/tree/v2.x) branch.
+
+# README
+
 [![HUG](https://raw.github.com/hugapi/hug/develop/artwork/logo.png)](http://hug.rest)
 ===================
 
