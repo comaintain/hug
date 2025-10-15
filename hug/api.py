@@ -433,7 +433,7 @@ class HTTPInterfaceAPI(InterfaceAPI):
                 #   be provided without a trailing slash. To ensure this, we rstrip it from url.
                 #   See also: https://falcon.readthedocs.io/en/latest/api/app.html#falcon.App.add_route
                 # NOTE(vytas): I'm not sure if url can be '/' here, but adding a check just in case.
-                route_url = url.rstrip('/') if url != '/' else url
+                route_url = url.rstrip("/") if url != "/" else url
 
                 falcon_api.add_route(router_base_url + route_url, router)
                 if self.versions and self.versions != (None,):

@@ -54,7 +54,9 @@ def authenticator(function, challenges=()):
             if result is False:
                 raise HTTPUnauthorized(
                     title="Invalid Authentication",
-                    description="Provided {0} credentials were invalid".format(authenticator_name()),
+                    description="Provided {0} credentials were invalid".format(
+                        authenticator_name()
+                    ),
                     challenges=challenges,
                 )
 
