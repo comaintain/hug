@@ -46,15 +46,15 @@ def authenticator(function, challenges=()):
 
             if result is None:
                 raise HTTPUnauthorized(
-                    "Authentication Required",
-                    "Please provide valid {0} credentials".format(authenticator_name()),
+                    title="Authentication Required",
+                    description="Please provide valid {0} credentials".format(authenticator_name()),
                     challenges=challenges,
                 )
 
             if result is False:
                 raise HTTPUnauthorized(
-                    "Invalid Authentication",
-                    "Provided {0} credentials were invalid".format(authenticator_name()),
+                    title="Invalid Authentication",
+                    description="Provided {0} credentials were invalid".format(authenticator_name()),
                     challenges=challenges,
                 )
 
@@ -81,8 +81,8 @@ def basic(request, response, verify_user, realm="simple", context=None, **kwargs
         auth_type, user_and_key = http_auth.split(" ", 1)
     except ValueError:
         raise HTTPUnauthorized(
-            "Authentication Error",
-            "Authentication header is improperly formed",
+            title="Authentication Error",
+            description="Authentication header is improperly formed",
             challenges=('Basic realm="{}"'.format(realm),),
         )
 
@@ -100,8 +100,8 @@ def basic(request, response, verify_user, realm="simple", context=None, **kwargs
                 return user
         except (binascii.Error, ValueError):
             raise HTTPUnauthorized(
-                "Authentication Error",
-                "Unable to determine user and password with provided encoding",
+                title="Authentication Error",
+                description="Unable to determine user and password with provided encoding",
                 challenges=('Basic realm="{}"'.format(realm),),
             )
     return False

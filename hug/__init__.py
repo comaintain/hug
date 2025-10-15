@@ -101,3 +101,21 @@ except (ImportError, AttributeError):
     pass
 
 __version__ = current
+
+from hug import _compat  # isort:skip
+
+# NOTE(vytas): Hug often instantiates Falcon exceptions by passing title and description via
+#   positional arguments. Support for this was dropped in Falcon 4.0, see more here:
+#   https://falcon.readthedocs.io/en/stable/changes/4.0.0.html#breaking-changes.
+#
+#   Since hug is re-exporting everything from Falcon, we partially reduce the damage for existing
+#   apps by shimming the re-exported exceptions corresponding to the most-popular HTTP status codes
+#   to accept title and description as positional arguments (like it is 2019 again).
+
+HTTPBadRequest = _compat._allow_title_descr_posargs(HTTPBadRequest)  # noqa: F405
+HTTPUnauthorized = _compat._allow_title_descr_posargs(HTTPUnauthorized)  # noqa: F405
+HTTPForbidden = _compat._allow_title_descr_posargs(HTTPForbidden)  # noqa: F405
+HTTPNotFound = _compat._allow_title_descr_posargs(HTTPNotFound)  # noqa: F405
+HTTPGone = _compat._allow_title_descr_posargs(HTTPGone)  # noqa: F405
+HTTPInternalServerError = _compat._allow_title_descr_posargs(HTTPInternalServerError)  # noqa: F405
+HTTPServiceUnavailable = _compat._allow_title_descr_posargs(HTTPServiceUnavailable)  # noqa: F405

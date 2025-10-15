@@ -497,7 +497,7 @@ def test_error_handling():
 
     @hug.get()
     def test_error():
-        raise falcon.HTTPInternalServerError("Failed", "For Science!")
+        raise falcon.HTTPInternalServerError(title="Failed", description="For Science!")
 
     response = hug.test.get(api, "test_error")
     assert "errors" in response.data

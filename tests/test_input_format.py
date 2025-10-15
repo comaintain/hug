@@ -21,10 +21,14 @@ OTHER DEALINGS IN THE SOFTWARE.
 """
 
 import os
-from cgi import parse_header
 from io import BytesIO
 
 import requests
+
+try:
+    from falcon import parse_header
+except ImportError:
+    from cgi import parse_header
 
 import hug
 
