@@ -3,6 +3,7 @@ root = true
 [*]
 indent_style = space
 insert_final_newline = true
+end_of_line = lf
 indent_size = 4
 
 [*.py]
@@ -10,4 +11,7 @@ max_line_length = 100
 ignore_frosted_errors = E103
 
 [*.md]
+indent_size = 2
+
+[*.{yml,yaml}]
 indent_size = 2
