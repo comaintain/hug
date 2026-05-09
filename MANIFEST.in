@@ -1,2 +1,10 @@
 include LICENSE
-include *.md
+include ACKNOWLEDGEMENTS.md
+include ARCHITECTURE.md
+include CHANGELOG.md
+include CODING_STANDARD.md
+include CONTRIBUTING.md
+include EXTENDING.md
+include FAQ.md
+include README.md
+include SECURITY.md
