@@ -169,14 +169,21 @@ def reqresp_middleware(api=None):
         apply_to_api = hug.API(api) if api else hug.api.from_object(middleware_generator)
 
         class MiddlewareRouter:
-            __slots__ = ("gen",)
+            __slots__ = ()
+            # The generator is request-scoped state, while this router lives for the lifetime of the
+            # server, so it must be stored on the request context rather than the router itself.
+            context_key = "_hug_reqresp_gen_{0}_{1}".format(
+                middleware_generator.__name__, id(middleware_generator)
+            )
 
             def process_request(self, request, response):
-                self.gen = middleware_generator(request)
-                return self.gen.__next__()
+                generator = middleware_generator(request)
+                request.context[self.context_key] = generator
+                return generator.__next__()
 
             def process_response(self, request, response, resource, _req_succeeded):
-                return self.gen.send((response, resource))
+                generator = request.context.pop(self.context_key)
+                return generator.send((response, resource))
 
         apply_to_api.http.add_middleware(MiddlewareRouter())
         return middleware_generator
